@@ -83,6 +83,7 @@ guessCounter = 0
 guesses = []
 rightguess = 0
 # fuck python
+wasIn = []
 while True:
     if guessCounter > 5:
         print("you lost")
@@ -92,17 +93,22 @@ while True:
     print(HANGMANPICS[guessCounter])
     print(word)
     guessDisplayer = ""
-
-    wasIn = []
+    
     for char in word:
         if char in guesses:
+            guessDisplayer += " " + char + " "
             if char not in wasIn:
-                guessDisplayer += " " + char + " "
-                wasIn.append(char)
                 rightguess+=1
+                wasIn.append(char)
+
         else:
             guessDisplayer += " _ "
 
+    if rightguess + 1 == len(word) or  " _ " not in guessDisplayer:
+        print("you won")
+        exit()
+    #idk thsi is a retarded way to check if the user has won
+    
     print(guessDisplayer)
     print("gueesses:", " ".join(guesses))
     
