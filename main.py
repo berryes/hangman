@@ -86,12 +86,12 @@ rightguess = 0
 wasIn = []
 while True:
     if guessCounter > 5:
-        print("you lost")
+        print(HANGMANPICS[6])
+        print("YOU LOST")
         exit()
 
 
     print(HANGMANPICS[guessCounter])
-    print(word)
     guessDisplayer = ""
     
     for char in word:
